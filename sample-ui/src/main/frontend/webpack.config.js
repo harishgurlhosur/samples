@@ -1,11 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
-var WebpackStrip = require('strip-loader');
 
 module.exports = {
     context: path.resolve(__dirname, 'app'),
     entry: {
-        app : ['./app.js', './util.js']
+        app : ['./app', './util.js']
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -26,11 +25,6 @@ module.exports = {
                     loader: "babel-loader",
                     options: { presets: ['env']}
                 }]
-            },
-            {
-                test: [ /\.js$/, /\.es6$/ ],
-                exclude: /node_modules/,
-                loader: WebpackStrip.loader('console.log')
             }
         ]
     },
